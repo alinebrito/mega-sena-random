@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    .center {
+        text-align: center;
+        margin: auto;
+        padding: 10px;
+        padding: 70px 0;
+    }
+    .title {
+        font-size: 40px
+    }
+    .btn {
+        font-size: 20px
+    }
+    </style>
+</head>
+<body>
+
+<div class="center">
+    <h2 class="title">Mega-Sena</h2>
+    <p class="title" id="numbers">1  2  3  4  5  6</p>
+    <button class="btn" id="btnGenerator">Gerar</button>
+</div>
+
+<script>
+
+    const mega = () => {
+        var numbers = [];
+        while(numbers.length < 6){
+            number = Math.floor(Math.random() * 60 + 1);
+            if(numbers.indexOf(number) === -1) numbers.push(number);
+        }
+        numbers.sort(function(a, b) {
+            return a - b;
+        });
+        return numbers;
+    };
+
+    const generatorMega = () => {
+        numbers = mega().toString().replaceAll(",", "  ");
+        document.getElementById("numbers").innerHTML = numbers;
+    }
+
+    document.getElementById("btnGenerator").addEventListener("click", generatorMega);
+
+</script> 
+
+</body>
+</html>
